@@ -60,16 +60,11 @@ function weather() {
         })
          .then(function(response){
             console.log(response);
-            var uvBadge = $("<span>").addClass("badge badge-danger").text(response.value);
-            var uvIndex = $("<p>").text("UV Index: " + uvBadge);
-
-
-            // <span class="badge badge-danger">response.value</span>
-            // var uvIndex= $("<p>").text("UV Index: " + uvBadge).addClass("p-2 m-2");
+            // var uvBadge = $("<button>").addClass("badge badge-danger").text(response.value);
+            var uvIndex = $("<p>").text("UV Index: " + response.value).addClass("p-2 m-2");
 
             $("#current-conditions").append(uvIndex);
 
-            // var uvIndex = $("<p>").text("UV Index Placeholder").addClass("p-2 m-2");
          })
         
         // badge badge-danger (bootstrap badge class for UV Index)
@@ -88,28 +83,28 @@ function weather() {
             // clear out current 5 day forecast 
             $("#forecast").empty();
 
-            // console.log(response);
+             console.log(response);
 
     
 
-            // for (let i = 6; i < response.list.length; i =+ 8){
+             for (let i = 5; i < response.list.length; i = i + 8){
 
                 //creates new div for 
-                var newDiv = $("<div>").addClass("col-md-2 bg-primary text-white ml-3 mb-3 rounded");
+                var newDiv = $("<div>").addClass("col-md-2 bg-primary text-white m-auto my-2 rounded");
 
                 var date = "Date Placeholder"
                 //forecast icons
-                var icons = "http://openweathermap.org/img/w/" + response.list[6].weather[0].icon + ".png"
+                var icons = "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png"
                 var forecastIcon = $("<img>").attr("src", icons)
                 // forecast temperatures and humidity
-                var forecastTemp = $("<p>").text("Temp: " + Math.round(response.list[6].main.temp) + "°F");
-                var forecastHumidity = $("<p>").text("Humidity: " + response.list[6].main.humidity + "%");
+                var forecastTemp = $("<p>").text("Temp: " + Math.round(response.list[i].main.temp) + "°F");
+                var forecastHumidity = $("<p>").text("Humidity: " + response.list[i].main.humidity + "%");
 
                 newDiv.append(date, forecastIcon, forecastTemp, forecastHumidity);
 
                 $("#forecast").append(newDiv);
     
-            // }
+             }
 
         })
 
