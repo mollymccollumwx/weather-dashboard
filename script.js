@@ -39,7 +39,7 @@ function weather() {
         
         // city name & current weather Icon
         var cityHeader = $("<h2>").text(response.name).addClass("p-2 m-2");
-        var icon = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
+        var icon = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
         var currentIcon = $("<img>").attr("src", icon)
         //append city and icon together to appear on the same line
         cityHeader.append(currentIcon);
@@ -52,7 +52,7 @@ function weather() {
         var latitude = response.coord.lat;
         var longitude = response.coord.lon;
 
-        var queryUrlUVIndex = "http://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=" +APIKey;
+        var queryUrlUVIndex = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=" +APIKey;
 
         $.ajax ({
             url: queryUrlUVIndex,
@@ -61,6 +61,7 @@ function weather() {
          .then(function(response){
             console.log(response);
             // var uvBadge = $("<button>").addClass("badge badge-danger").text(response.value);
+            // write conditionals for badge color corresponding to UV index
             var uvIndex = $("<p>").text("UV Index: " + response.value).addClass("p-2 m-2");
 
             $("#current-conditions").append(uvIndex);
@@ -86,7 +87,8 @@ function weather() {
              console.log(response);
 
     
-
+            // starts at 5 and adds 8 to jump to next day index value 
+            // don't understand index times...need to check to see if they change
              for (let i = 5; i < response.list.length; i = i + 8){
 
                 //creates new div for 
