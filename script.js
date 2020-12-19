@@ -41,8 +41,10 @@ function weather() {
         var cityHeader = $("<h2>").text(response.name).addClass("p-2 m-2");
         var icon = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
         var currentIcon = $("<img>").attr("src", icon)
+        var currentDate = $("<span>").text(" (" + dayjs().format('MM/DD/YYYY') + ")");
+        console.log(currentDate)
         //append city and icon together to appear on the same line
-        cityHeader.append(currentIcon);
+        cityHeader.append(currentDate, currentIcon);
 
         //current temperature
         var temperature = $("<p>").text("Temperature: " + Math.round(response.main.temp) + "°F").addClass("p-2 m-2");
