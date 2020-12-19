@@ -35,7 +35,7 @@ function weather() {
     })
       .then(function(response) {
           
-    
+        
         
         // city name & current weather Icon
         var cityHeader = $("<h2>").text(response.name).addClass("p-2 m-2");
@@ -49,10 +49,31 @@ function weather() {
         var humidity = $("<p>").text("Humidity: " + response.main.humidity + "%").addClass("p-2 m-2");
         var windSpeed = $("<p>").text("Wind Speed: " + Math.round(response.wind.speed) + " MPH").addClass("p-2 m-2");
 
+        var latitude = response.coord.lat;
+        var longitude = response.coord.lon;
 
-        var uvIndex = $("<p>").text("UV Index Placeholder").addClass("p-2 m-2");
+        var queryUrlUVIndex = "http://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=" +APIKey;
+
+        $.ajax ({
+            url: queryUrlUVIndex,
+            method: "GET"
+        })
+         .then(function(response){
+            console.log(response);
+            var uvBadge = $("<span>").addClass("badge badge-danger").text(response.value);
+            var uvIndex = $("<p>").text("UV Index: " + uvBadge);
+
+
+            // <span class="badge badge-danger">response.value</span>
+            // var uvIndex= $("<p>").text("UV Index: " + uvBadge).addClass("p-2 m-2");
+
+            $("#current-conditions").append(uvIndex);
+
+            // var uvIndex = $("<p>").text("UV Index Placeholder").addClass("p-2 m-2");
+         })
+        
         // badge badge-danger (bootstrap badge class for UV Index)
-        $("#current-conditions").append(cityHeader, temperature, humidity, windSpeed, uvIndex);
+        $("#current-conditions").append(cityHeader, temperature, humidity, windSpeed);
 
       })
 
@@ -67,7 +88,7 @@ function weather() {
             // clear out current 5 day forecast 
             $("#forecast").empty();
 
-            console.log(response);
+            // console.log(response);
 
     
 
