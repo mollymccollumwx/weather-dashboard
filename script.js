@@ -81,7 +81,7 @@ function weather() {
             // creates new div for 5 day forecast
            var newDiv = $("<div>").addClass("col-md-2 bg-primary text-white m-auto my-2 rounded");
            var date = "Date Placeholder"
-           var icons = "http://openweathermap.org/img/w/" + response.daily[i].weather[0].icon + ".png"
+           var icons = "https://openweathermap.org/img/w/" + response.daily[i].weather[0].icon + ".png"
            var forecastIcon = $("<img>").attr("src", icons)
            var forecastTemp = $("<p>").text("Temp: " + Math.round(response.daily[i].temp.max) + "°F");
             var forecastHumidity = $("<p>").text("Humidity: " + response.daily[i].humidity + "%");
