@@ -57,7 +57,7 @@ function weather() {
 
         $("#current-conditions").append(cityHeader, temperature, humidity, windSpeed);
 
-        // var queryUrlUVIndex = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=" +APIKey;
+
 
        var queryUrlUVIndex = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude={minutely}&units=imperial&appid=" + APIKey;
 
@@ -95,65 +95,10 @@ function weather() {
             }
 
          })
-        
-
-        // for (let i = 7; i < response.list.length; i = i + 8){
-
-        //     //creates new div for 
-        //     var newDiv = $("<div>").addClass("col-md-2 bg-primary text-white m-auto my-2 rounded");
-
-        //     var date = "Date Placeholder"
-        //     //forecast icons
-        //     var icons = "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png"
-        //     var forecastIcon = $("<img>").attr("src", icons)
-        //     // forecast temperatures and humidity
-        //     var forecastTemp = $("<p>").text("Temp: " + Math.round(response.list[i].main.temp_max) + "°F");
-        //     var forecastHumidity = $("<p>").text("Humidity: " + response.list[i].main.humidity + "%");
-
-        //     newDiv.append(date, forecastIcon, forecastTemp, forecastHumidity);
-
-        //     $("#forecast").append(newDiv);
-
-        // }
 
       })
 
-    //   // 5 Day forecast API call
-    //   var queryURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q="+ cityName +"&units=imperial&appid=" + APIKey;
-
-    //   $.ajax ({
-    //       url: queryURLForecast,
-    //       method: "GET"
-    //   })
-    //     .then(function(response) {
-    //         // clear out current 5 day forecast 
-    //         $("#forecast").empty();
-
-    //         //  console.log(response);
-
-    
-    //         // starts at 7 and adds 8 to jump to next day index value 
-    //         // don't understand index times...need to check to see if they change
-    //          for (let i = 7; i < response.list.length; i = i + 8){
-
-    //             //creates new div for 
-    //             var newDiv = $("<div>").addClass("col-md-2 bg-primary text-white m-auto my-2 rounded");
-
-    //             var date = "Date Placeholder"
-    //             //forecast icons
-    //             var icons = "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png"
-    //             var forecastIcon = $("<img>").attr("src", icons)
-    //             // forecast temperatures and humidity
-    //             var forecastTemp = $("<p>").text("Temp: " + Math.round(response.list[i].main.temp_max) + "°F");
-    //             var forecastHumidity = $("<p>").text("Humidity: " + response.list[i].main.humidity + "%");
-
-    //             newDiv.append(date, forecastIcon, forecastTemp, forecastHumidity);
-
-    //             $("#forecast").append(newDiv);
-    
-    //          }
-
-    //     })
+   
 
     }
 
