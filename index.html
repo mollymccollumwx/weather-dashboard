@@ -27,31 +27,32 @@
         <!-- page content -->
         <main class="container-fluid">
             <div class="row">
-                <!-- search bar and cities -->
+                <!-- search bar and cities from storage -->
                 <div class="col-3">
                     
                     <div class="m-2">
                         <h5>Search for a City:</h5>
-
+                        <!-- search bar and button -->
                         <form class="form group" id="city-form">
                             <input class="form-control-md" type="text" placeholder="Enter City Here" id="user-input">
                             <button type="submit" id="search-button" class="btn btn-primary m-auto"><i class="fas fa-search"></i></button> 
                         </form>
 
-                        <div class="card my-2" style="width: 18rem;">
+                        <!-- cities from storage -->
+                        <div class="card my-2" style="width: 14rem;">
                             <ul class="list-group list-group-flush" id="storage-cities">
-                              <!-- <li class="list-group-item"></li>
-                              <li class="list-group-item"> city 2 </li>
-                              <li class="list-group-item"> city 3</li> -->
+                                <!-- list dynamically generated  -->
                             </ul>
                           </div>
                     </div>
                 </div>
                 <!-- current city and 5 day forecast -->
                 <section class = "col-lg-9 background">
+                    <!-- city current conditions -- dynamically generated HTML -->
                     <div class="row border m-5">
                         <div id="current-conditions" class="m-2"></div>
                     </div>
+                    <!-- 5 Day Forecast -- dynamically generated HTML -->
                     <div class="m-2">
                         <h2 class="m-2">5-Day Forecast: </h2>
                         <div class="row m-1" id="forecast">
