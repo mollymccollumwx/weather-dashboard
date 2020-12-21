@@ -22,7 +22,7 @@ Once the user types in a city and presses the search button, page displays the u
 
 All of the recently searched cities appear under the search bar on the left side of the screen. At anytime the user can click on of those cities to get the forecast to display. The information persists between page refreshes. 
 
-![Recently searched cities appear on the left side of the screen](./images/final.png)
+![Recently searched cities appear on the left side of the screen](./images/Final.png)
 
 
 # Credits
