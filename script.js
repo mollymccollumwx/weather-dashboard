@@ -25,11 +25,11 @@ $(document).ready(function () {
     
     }
 
-    weather();
+    weather(storageCities[storageCities.length-1]);
   }
 
   //uses open weather API to get current conditions and 5 day forecast
-  function weather() {
+  function weather(cityName) {
     //clear out current city forecast
     $("#current-conditions").empty();
     
@@ -168,13 +168,15 @@ $(document).ready(function () {
     // sets and stringifies the array for local storage
     localStorage.setItem("cityArray", JSON.stringify(cityArray));
     // calls weather function
-    weather();
+    weather(newCityName);
   });
 
-  $("#storage-cities").on("click", function(e) {
+  $(".list-group-item").on("click", function(e) {
     e.preventDefault();
     console.log("you clicked on a list item");
-   
+    var cityButton = ($(this).text());
+  
+    weather(cityButton);
 
   });
 
