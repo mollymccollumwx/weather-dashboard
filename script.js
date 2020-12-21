@@ -23,6 +23,10 @@ $(document).ready(function () {
         cityName = storageCities[i];
       }
     
+    } else {
+
+      storageCities = ["There are no cities"];
+
     }
 
     weather(storageCities[storageCities.length-1]);
@@ -32,6 +36,7 @@ $(document).ready(function () {
   function weather(cityName) {
     //clear out current city forecast
     $("#current-conditions").empty();
+
     
 
     var queryURL =
@@ -46,9 +51,10 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (response) {
     
+      console.log(response);
     //reveals the forecast container
     $("section").removeClass("d-none");
-
+    
       // city name & current weather Icon
       var cityHeader = $("<h2>").text(response.name).addClass("p-2 m-2");
       var icon =
@@ -96,12 +102,6 @@ $(document).ready(function () {
         url: queryUrlUVIndex,
         method: "GET",
       }).then(function (response) {
-
-        console.log(response);
-        // var uvBadge = $("<span>").addClass("badge badge-danger").text(response.value);
-        // write conditionals for badge color corresponding to UV index
-        // low = 2 or below, moderate = 3-5, high = 6+
-        // success = green, warning = yellow, danger = red (bootstrap classes)
         
         var uvIndexDisplay = $("<button>");
         if (response.current.uvi < 3){
@@ -158,7 +158,7 @@ $(document).ready(function () {
   //EVENT LISTENERS
   $("#city-form").on("submit", function (e) {
     //prevents default refresh
-    e.preventDefault();
+    //  e.preventDefault();
     //takes in user city selection
     newCityName = $("#user-input").val();
     //adds user input to global variable
@@ -168,7 +168,7 @@ $(document).ready(function () {
     // sets and stringifies the array for local storage
     localStorage.setItem("cityArray", JSON.stringify(cityArray));
     // calls weather function
-    weather(newCityName);
+    weather(cityName);
   });
 
   $(".list-group-item").on("click", function(e) {
