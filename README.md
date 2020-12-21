@@ -1,5 +1,11 @@
 # Weather Dashboard
-This webpage was created so that 
+This webpage was created so that a user can find current conditions and a 5-day forecast for any city. The developer was tasked with using the Open Weather API to create the dashboard. Some of the development tasks included:
+
+* Presenting the user with current conditions (temperature, humidity, wind speed and the UVIndex) and the 5-day forecast.
+
+* Enhancing the UVIndex display with colors depending on if the conditions are favorable, moderate, or severe.
+
+* Displaying the search history on the page and making it dynamic so that the user can click on it to retrieve the weather information for that city. 
 
 # Installation
 
