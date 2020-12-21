@@ -15,16 +15,15 @@ $(document).ready(function () {
     //checks to see if there is anything in storage
     if (storageCities !== null) {
       cityArray = storageCities;
-      
-    
-    }
-    //populates card under the search bar with most recent searches 
+      //populates card under the search bar with most recent searches 
     for (i = 0; i < storageCities.length; i++) {
         var liEl = $("<li>").addClass("list-group-item").text(storageCities[i]);
         $("#storage-cities").prepend(liEl);
         //sets the most recent city to the cityName 
         cityName = storageCities[i];
       }
+    
+    }
 
     weather();
   }
@@ -33,7 +32,7 @@ $(document).ready(function () {
   function weather() {
     //clear out current city forecast
     $("#current-conditions").empty();
-
+    
 
     var queryURL =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -46,6 +45,9 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (response) {
+    
+    //reveals the forecast container
+    $("section").removeClass("d-none");
 
       // city name & current weather Icon
       var cityHeader = $("<h2>").text(response.name).addClass("p-2 m-2");
@@ -110,6 +112,7 @@ $(document).ready(function () {
             uvIndexDisplay.addClass("btn btn-warning");
         }
         var uvIndex = $("<p>").text("UV Index: ").addClass("p-2 m-2");
+
         uvIndex.append(uvIndexDisplay.text(response.current.uvi));
        
         $("#current-conditions").append(uvIndex);
@@ -171,6 +174,7 @@ $(document).ready(function () {
   $("#storage-cities").on("click", function(e) {
     e.preventDefault();
     console.log("you clicked on a list item");
+   
 
   });
 
